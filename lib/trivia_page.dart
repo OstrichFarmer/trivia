@@ -5,6 +5,17 @@ class TriviaPage extends StatefulWidget {
   _TriviaPageState createState() => _TriviaPageState();
 }
 
+List<Icon> scoreKeeper = [
+  Icon(
+    Icons.check,
+    color: Colors.green,
+  ),
+  Icon(
+    Icons.cancel,
+    color: Colors.red,
+  ),
+];
+
 class _TriviaPageState extends State<TriviaPage> {
   @override
   Widget build(BuildContext context) {
@@ -53,6 +64,9 @@ class _TriviaPageState extends State<TriviaPage> {
             ),
           ),
         ),
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
