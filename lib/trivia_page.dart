@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trivia/question.dart';
 
 class TriviaPage extends StatefulWidget {
   @override
@@ -7,13 +8,11 @@ class TriviaPage extends StatefulWidget {
 
 List<Icon> scoreKeeper = [];
 
-List<String> questions = [
-  'Hippos sweat a red substance',
-  'There are 14 bones in a human foot',
-  'Cardi B\'s real name is Cardigan Backyardigan'
+List<Question> questionBank = [
+  Question(q: 'Hippos sweat a red substance', a: true),
+  Question(q: 'There are 14 bones in a human foot', a: false),
+  Question(q: 'Cardi B\'s real name is Cardigan Backyardigan', a: false)
 ];
-
-List<bool> answers = [true, false, false];
 int questionNumber = 0;
 
 class _TriviaPageState extends State<TriviaPage> {
@@ -29,7 +28,7 @@ class _TriviaPageState extends State<TriviaPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
@@ -45,7 +44,8 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
                 if (correctAnswer == true) {
                   print('Correct answer');
                 } else
@@ -68,7 +68,8 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
                 if (correctAnswer == false) {
                   print('Correct answer');
                 } else
