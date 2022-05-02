@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trivia/question.dart';
+import 'package:trivia/quiz-brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 class TriviaPage extends StatefulWidget {
   @override
@@ -8,11 +10,6 @@ class TriviaPage extends StatefulWidget {
 
 List<Icon> scoreKeeper = [];
 
-List<Question> questionBank = [
-  Question(q: 'Hippos sweat a red substance', a: true),
-  Question(q: 'There are 14 bones in a human foot', a: false),
-  Question(q: 'Cardi B\'s real name is Cardigan Backyardigan', a: false)
-];
 int questionNumber = 0;
 
 class _TriviaPageState extends State<TriviaPage> {
@@ -28,7 +25,7 @@ class _TriviaPageState extends State<TriviaPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                questionBank[questionNumber].questionText,
+                quizBrain.questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
@@ -45,7 +42,7 @@ class _TriviaPageState extends State<TriviaPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionBank[questionNumber].questionAnswer;
+                    quizBrain.questionBank[questionNumber].questionAnswer;
                 if (correctAnswer == true) {
                   print('Correct answer');
                 } else
@@ -69,7 +66,7 @@ class _TriviaPageState extends State<TriviaPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    questionBank[questionNumber].questionAnswer;
+                    quizBrain.questionBank[questionNumber].questionAnswer;
                 if (correctAnswer == false) {
                   print('Correct answer');
                 } else
