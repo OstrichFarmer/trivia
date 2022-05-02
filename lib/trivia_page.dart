@@ -25,7 +25,7 @@ class _TriviaPageState extends State<TriviaPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.questionBank[questionNumber].questionText,
+                quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
@@ -42,7 +42,7 @@ class _TriviaPageState extends State<TriviaPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer(questionNumber);
                 if (correctAnswer == true) {
                   print('Correct answer');
                 } else
@@ -66,7 +66,7 @@ class _TriviaPageState extends State<TriviaPage> {
               ),
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer(questionNumber);
                 if (correctAnswer == false) {
                   print('Correct answer');
                 } else
