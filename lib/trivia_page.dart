@@ -10,8 +10,6 @@ class TriviaPage extends StatefulWidget {
 
 List<Icon> scoreKeeper = [];
 
-int questionNumber = 0;
-
 class _TriviaPageState extends State<TriviaPage> {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class _TriviaPageState extends State<TriviaPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(questionNumber),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
@@ -41,14 +39,13 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getQuestionAnswer();
                 if (correctAnswer == true) {
                   print('Correct answer');
                 } else
                   print('Wrong answer');
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
               style: ButtonStyle(
@@ -65,14 +62,13 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getQuestionAnswer();
                 if (correctAnswer == false) {
                   print('Correct answer');
                 } else
                   print('Wrong answer');
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
               style: ButtonStyle(
