@@ -33,7 +33,7 @@ class QuizBrain {
 
   // ignore: missing_return
   Void nextQuestion() {
-    if (_questionNumber < _questionBank.length) {
+    if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
     }
   }
