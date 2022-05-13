@@ -8,9 +8,31 @@ class TriviaPage extends StatefulWidget {
   _TriviaPageState createState() => _TriviaPageState();
 }
 
-List<Icon> scoreKeeper = [];
-
 class _TriviaPageState extends State<TriviaPage> {
+  List<Icon> scoreKeeper = [];
+
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    setState(() {
+      if (userPickedAnswer == correctAnswer) {
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+
+      quizBrain.nextQuestion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,14 +61,7 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == true) {
-                  print('Correct answer');
-                } else
-                  print('Wrong answer');
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green)),
@@ -62,14 +77,7 @@ class _TriviaPageState extends State<TriviaPage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == false) {
-                  print('Correct answer');
-                } else
-                  print('Wrong answer');
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red)),
