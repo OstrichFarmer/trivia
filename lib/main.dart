@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.grey.shade600,
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
